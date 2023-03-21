@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Фильтры для воды</title> 
+		{% for c in company_info %}
+		<link rel="shortcut icon" type="image/x-icon" href="{{c.logo_mini.url}}" sizes="15x15">
+		{% endfor %}
+		<!-- google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300%7CLibre+Baskerville:400,400italic,700%7CLato:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+		<!-- Bootstrap -->
+		<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">
+		<link href="{% static 'assets/css/global.css' %}" rel="stylesheet">
+		<link href="{% static 'assets/css/settings.css' %}" rel="stylesheet">
+		<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+		<link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+		<link href="assets/css/skin.less' %}" rel="stylesheet/less">
+
+        <link rel="stylesheet" href="{% static 'new/css/style.css' %}">
+
+
+
+	</head>
+	<body>
+		<!--Wrapper Section Start Here -->
+		<div id="wrapper">
+			
+			<!--header Section Start Here -->
+			<header id="header">
+				
+				<div class="secondry-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4">
+								{% for c in company_info %}
+								<a href="{% url 'index' %}" class="logo"><img src="{{c.logo.url}}" alt="logo" style="max-width:50%" /></a>
+								{% endfor %}
+							</div>
+							<div class="col-xs-12 col-sm-8 menu-wrapper">
+								<div class="button-wrapper">
+									<button class="nav-button"></button>
+								</div>
+								<nav class="navigation">
+
+									<ul class="menu">
+										<li class="active">
+											<a href="#header">Главная</a>
+
+										</li>
+		
+										<li>
+											<a >Товары</a>
+												<div id="gallery-header-center" class="submenu">
+													<div id="gallery-header-center-right">
+														<ul>
+															<a href="#filter-al}">
+																<a  href="#prod">
+																<li class="gallery-header-center-right-links" id="filter-all" >
+																Все
+																</li>
+																</a>
+															</a>
+															
+															
+														</ul>
+														<ul>
+															{% for k in category%}
+															<a href="#filter-{{k.slider_number}}">
+																<a  href="#prod">
+																<li class="gallery-header-center-right-links" id="filter-{{k.slider_number}}" >
+																{{k.name}}
+																</li>
+																</a>
+															</a>
+															{%endfor %}
+															
+															
+														</ul>
+													</div>
+												</div>
+												
+										</li>
+										
+										<li>
+											<a href="#footer">Контакты</a>
+											
+										</li>
+										<a href="{% url 'index' %}" > <img src="{% static 'assets/img/new/icon/tm.png' %}" alt="#" style="max-width:5%; margin-left:5%" class="tm" /></a>
+										
+									</ul>
+								</nav>
+								{% for c in company_info %}
+									<a href="TEL:+{{c.number}}" class="quote">Позвонить</a>
+								{% endfor %}
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</header>
+			<!--header Section End Here -->
+			
+			<section class="slider-section">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators slider-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
+	
+					<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+							{%for i in banner %}
+								<div class="item {{i.active}}">
+									<img src="{{i.image.url}}" width="1648" height="600" alt="">
+									<div class="carousel-caption">
+										
+									</div>
+								</div>
+							{%endfor%}
+						</div>
+						
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<span class="pe-7s-angle-left glyphicon-chevron-left" aria-hidden="true"></span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<span class="pe-7s-angle-right glyphicon-chevron-right" aria-hidden="true"></span>
+					</a>
+				</div>
+			</section>
+
+
+
+			
+			<!--content Section Start Here -->
+			<div id="content">
+
+				<!--Info Section Start Here -->
+				<div class="info-container" id='sec'>
+					<div class="container">
+						<div class="row">
+							{% for a in about_us %}
+							<div class="col-xs-12 col-sm-6 about-us">
+								<header class="section-header">
+									<h2>{{a.title}} <i></i></h2>
+									<strong>
+										{{a.mini_desc}}
+								</header>
+								<p>
+									{{a.desc}}
+								</p>
+								<ul class="our-quality clearfix">
+									<li class="active">
+										<i class="check-svg "><img src="{% static 'assets/svg/09.svg' %}" alt="" class="svg" /></i>
+										<strong><span>Высокое</span> Качества</strong>
+									</li>
+									<li class="active">
+										<i class="check-svg"><img src="{% static 'assets/svg/09.svg' %}" alt="" class="svg" /></i>
+										<strong> <span> Поддержка </span> &amp; 24/7</strong>
+									</li>
+									<li class="active">
+										<i class="check-svg"><img src="{% static 'assets/svg/09.svg' %}" alt="" class="svg" /></i>
+										<strong><span>Бысрая </span> Доставка</strong>
+									</li>
+									<li class="active">
+										<i class="check-svg"><img src="{% static 'assets/svg/09.svg' %}" alt="" class="svg" /></i>
+										<strong><span>Бысрая </span> Доставка</strong>
+									</li>
+								</ul>
+							</div>
+
+							<div class="col-xs-12 col-sm-6 our-images">
+								<ul>
+									<li class="zoom">
+										<figure>
+											 <img src="{{a.image_one.url}}" alt="" />
+										</figure>
+									</li>
+									<li class="zoom">
+										<figure>
+											<img src="{{a.image_second.url}}" alt="" />
+										</figure>
+									</li>
+								</ul>
+							<!--     <ul>
+							    <li class="zoom">
+							        <figure>
+							        <img src="{{a.image_three.url}}" alt="" />
+							        </figure>
+							    </li>
+							    <li class="zoom">
+							        <figure>
+							        <img src="{{a.image_fo.url}}" alt="" />
+							        </figure>
+							    </li>
+							</ul> -->
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div> 
+				<!--Info Section End Here -->
+
+				<!--Service Section Start Here -->
+				 <div class="service-container" >
+					<div class="container">
+						<div class="row">
+								<div class="left-detail animate-effect">
+									<div id="slide-items" class="flexslider">
+										<ul class="slides">
+											{% for j in product %}
+											<li>
+												<h2>{{j.name}} <i></i></h2>
+												<strong>{{j.mini_desc}}:</strong>
+												<p>
+													{{j.desc}}
+												</p>											
+											</li>	
+											{% endfor %} 
+											
+										</ul>
+									</div>
+								</div>
+								<div class="right-detail animate-effect">
+								<h2 style="text-align:center;">  <strong > </strong><span><span style="text-align:center;"></span>{{n.right_desc}}</span></h2>
+							</div>
+			
+							<div class="col-xs-12">
+								<div id="carousel" class="flexslider">
+									<ul class="our-service slides animate-effect clearfix">
+										{% for j in product %}
+										<li class="zoom">
+											<a href="#"> <em class="fa fa-caret-up"></em>
+											<figure class="fade-effect">
+												<img src="{{j.image.url}}" alt="" />
+											</figure> <strong> <i></i>{{j.name}} <span>{{j.category.name}}</span> </strong> </a>
+										</li>
+										{% endfor %}										
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div> 
+				<!--Service Section End Here -->
+				<div class="container" id='prod'>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="project-category clearfix">
+								{%for a in about_product%}
+								<h3>{{a.title}} <i></i></h3>
+
+								<div id="project-gallery">
+									<div id="gallery-header" class="category-box">
+										<strong>{{a.desc}}</strong>				
+
+									</div>
+                                {%endfor%}
+
+									
+
+
+									<div id="gallery-content">
+										<ul id="gallery-content-center" class="project-list">
+											{%for p in product %}
+											<li class="all {{p.category.slider_number}} zoom">
+
+												<figure>
+													<img src="{{p.image.url}}" alt="{{p.name}}" />
+												</figure>
+
+												<div class="detail clearfix animate-effect">
+													<h4><span>{{p.name}}<i></i></h4>
+													<h5>{{p.mini_desc}}</h5>
+													
+													<p>
+														{{p.desc}}
+													</p>
+													<p>
+														{{p.description}}
+													</p>
+													
+													<p>{% if p.line_one %}
+														{{p.line_one}}
+														{% endif %}
+														
+													</p>
+													<p>
+														{% if p.line_two %}
+														{{p.line_two}}
+														{% endif %}
+													
+													</p>
+													<p>
+														{% if p.line_three %}
+														{{p.line_three}}
+														{%endif%}
+														
+													</p>
+													
+												</div>
+
+											</li>
+											{%endfor%}
+											
+
+											
+
+										</ul>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--quote-container Start Here -->
+			 <div class="quote-container">
+					{% for f in footer_desc %}
+					<div class="right-banner">
+						<img src="{{f.image.url}}"  style="max-width:810px; background-repeat: no-repeat 0 0; background-size:cover;">
+					</div>
+					{% endfor %}
+
+					<div class="container">
+						<div class="row">
+							{% for f in footer_desc %}
+								<div class="col-xs-12">
+									<div class="quote-box animate-effect">
+										<h4>{{f.title}} <i></i></h4>
+										<p>
+											{{f.desc}}
+										</p>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				<!--quote-container End Here -->
+			
+
+				<!--partner-container Start Here -->
+				
+				<!--partner-container End Here -->
+			
+				
+			</div>
+			<!--content Section End Here -->
+
+			<!--footer Section Start Here -->
+			<footer id="footer">
+				<div class="col-xs-12">
+					<div class="our_contact clearfix">
+						<div class="right-detail">
+							
+
+								{% for ad in contact %}
+									<address>
+										<strong>{{ad.title}}</strong>
+										<ul>
+											<li>
+												<i class="fa fa-map-marker"></i>
+												<span>{{ad.location}}</span>
+											</li>
+
+											<li>
+												<i class="fa fa-phone"></i>
+												<span>+ {{ad.mobile_number}}</span>
+											</li>
+
+											<li>
+												<i class="fa fa-print"></i>
+												<span>+ {{ad.number}}</span>
+											</li>
+
+											<li>
+												<i class="fa fa-envelope-o"></i>
+												<span><a href="mailto:{{ad.email}}">{{ad.email}}</a></span>
+											</li>
+										</ul>
+									</address>
+								{% endfor %}
+							
+						</div>	
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="our_contact clearfix">
+							
+							</div>
+							
+							
+							<div class="our_contact clearfix">		
+
+								<div class="col-md-8" >
+									<div class="right-detail-map">
+									<!--     {% for c in company_info %}
+									<iframe iframe style="margin-left:-2%; margin-top:20%" class="right-detail-map"
+									src="{{c.map}}"
+									width="750" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+									{% endfor %} -->	
+									<img src="/media/megefreshkarta.webp" alt="karta">
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="left-detail clearfix">	
+										<form method="POST">
+											<fieldset>
+												{% csrf_token %}								
+												{{form}}
+												
+												
+												
+												<div class="box clearfix">
+													
+													<input class="button" value="Ugrat" type='submit'>
+												</div>
+											</fieldset>
+										</form>
+									</div>
+								</div>						
+								
+
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="our-partners">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 animate-effect">
+								<ul class="clearfix">
+									{% for certification in certification %}
+									<li class="zoom">
+										<a ><img src="{{certification.image.url}}" alt="" /></a>
+									</li>
+									{% endfor %}
+									
+								</ul>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="primary-footer">
+					<div class="container">
+			
+						<div class="row animate-effect">
+							<div class="col-xs-12 copyright">
+								<span>© 2022 Turkmen Zaman, все права защищены.</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</footer> 
+			<!--footer Section End Here -->
+
+		</div>
+		<!--Wrapper Section End Here -->
+
+		<script src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
+		<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'assets/js/less.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.bxslider.js' %}"></script>
+		<script defer src="{% static 'assets/js/jquery.flexslider.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/jquery-ui-1.10.4.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/jquery.isotope.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/animated-masonry-gallery.js' %}"></script>
+        <script src="{% static 'assets/js/site.js' %}"></script>
+
+
+        <script src="{% static 'new/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'new/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'new/js/wow.min.js' %}"></script>
+        <script src="{% static 'new/js/custom.js' %}"></script>
+
+	</body>
+</html>
